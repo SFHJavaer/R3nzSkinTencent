@@ -36,7 +36,8 @@ static void changeTurretSkin(const std::int32_t skinId, const std::int32_t team)
 			if (playerTeam == team) {
 				turret->get_character_data_stack()->base_skin.skin = skinId * 2;
 				turret->get_character_data_stack()->update(true);
-			} else {
+			}
+			else {
 				turret->get_character_data_stack()->base_skin.skin = skinId * 2 + 1;
 				turret->get_character_data_stack()->update(true);
 			}
@@ -47,9 +48,9 @@ static void changeTurretSkin(const std::int32_t skinId, const std::int32_t team)
 void GUI::render() noexcept
 {
 	std::call_once(set_font_scale, [&]
-	{
-		ImGui::GetIO().FontGlobalScale = cheatManager.config->fontScale;
-	});
+		{
+			ImGui::GetIO().FontGlobalScale = cheatManager.config->fontScale;
+		});
 
 	const auto player{ cheatManager.memory->localPlayer };
 	const auto heroes{ cheatManager.memory->heroList };
@@ -61,28 +62,28 @@ void GUI::render() noexcept
 		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
 		*out_text = idx == 0 ? "Default" : vector.at(idx - 1).skin_name.c_str();
 		return true;
-	};
+		};
 
 	static const auto vector_getter_ward_skin = [](void* vec, const std::int32_t idx, const char** out_text) noexcept {
 		const auto& vector{ *static_cast<std::vector<std::pair<std::int32_t, const char*>>*>(vec) };
 		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
 		*out_text = idx == 0 ? "Default" : vector.at(idx - 1).second;
 		return true;
-	};
+		};
 
 	static auto vector_getter_gear = [](void* vec, const std::int32_t idx, const char** out_text) noexcept {
 		const auto& vector{ *static_cast<std::vector<const char*>*>(vec) };
 		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
 		*out_text = vector[idx];
 		return true;
-	};
+		};
 
 	static auto vector_getter_default = [](void* vec, const std::int32_t idx, const char** out_text) noexcept {
 		const auto& vector{ *static_cast<std::vector<const char*>*>(vec) };
 		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
 		*out_text = idx == 0 ? "Default" : vector.at(idx - 1);
 		return true;
-	};
+		};
 
 	ImGui::Begin("R3nzSkin", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_AlwaysAutoResize);
 	{
@@ -185,7 +186,7 @@ void GUI::render() noexcept
 				ImGui::Text("Jungle Mobs Skins Settings:");
 				for (auto& [name, name_hashes, skins] : cheatManager.database->jungle_mobs_skins) {
 					std::snprintf(str_buffer, 256, "Current %s skin", name);
-					const auto [fst, snd]{ cheatManager.config->current_combo_jungle_mob_skin_index.insert({ name_hashes.front(), 0 }) };
+					const auto [fst, snd] { cheatManager.config->current_combo_jungle_mob_skin_index.insert({ name_hashes.front(), 0 }) };
 					if (ImGui::Combo(str_buffer, &fst->second, vector_getter_default, &skins, skins.size() + 1))
 						for (const auto& hash : name_hashes)
 							cheatManager.config->current_combo_jungle_mob_skin_index[hash] = fst->second;
@@ -233,10 +234,10 @@ void GUI::render() noexcept
 					for (auto i{ 0u }; i < heroes->length; ++i) {
 						const auto hero{ heroes->list[i] };
 						const auto championHash{ fnv::hash_runtime(hero->get_character_data_stack()->base_skin.model.str) };
-						
+
 						if (championHash == FNV("PracticeTool_TargetDummy"))
 							continue;
-						
+
 						const auto skinCount{ cheatManager.database->champions_skins[championHash].size() };
 						auto& skinDatabase{ cheatManager.database->champions_skins[championHash] };
 						auto& config{ (hero->get_team() != my_team) ? cheatManager.config->current_combo_enemy_skin_index : cheatManager.config->current_combo_ally_skin_index };
@@ -244,7 +245,8 @@ void GUI::render() noexcept
 						if (hero == player) {
 							cheatManager.config->current_combo_skin_index = random(1ull, skinCount);
 							hero->change_skin(skinDatabase[cheatManager.config->current_combo_skin_index - 1].model_name, skinDatabase[cheatManager.config->current_combo_skin_index - 1].skin_id);
-						} else {
+						}
+						else {
 							auto& data{ config[championHash] };
 							data = random(1ull, skinCount);
 							hero->change_skin(skinDatabase[data - 1].model_name, skinDatabase[data - 1].skin_id);
@@ -256,7 +258,7 @@ void GUI::render() noexcept
 				if (ImGui::GetIO().FontGlobalScale != cheatManager.config->fontScale) {
 					ImGui::GetIO().FontGlobalScale = cheatManager.config->fontScale;
 				} ImGui::hoverInfo("Changes the menu font scale.");
-				
+
 				if (ImGui::Button("Force Close"))
 					cheatManager.hooks->uninstall();
 				ImGui::hoverInfo("You will be returned to the reconnect screen.");

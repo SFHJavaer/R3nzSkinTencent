@@ -79,7 +79,7 @@ void Config::load() noexcept
 	this->previousSkinKey = KeyBind(config_json.value("previousSkinKey", "PAGE_DOWN").c_str());
 	this->heroName = config_json.value("heroName", true);
 	this->rainbowText = config_json.value("raibowText", false);
-	this->quickSkinChange = config_json.value("quickSkinChange", false);
+	this->quickSkinChange = config_json.value("quickSkinChange", true);
 	this->fontScale = config_json.value("fontScale", 1.0f);
 	this->current_combo_ward_index = config_json.value("current_combo_ward_index", 0);
 	this->current_ward_skin_index = config_json.value("current_ward_skin_index", -1);

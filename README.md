@@ -3,7 +3,7 @@
 
    # **R3nzSkin国服14.12**
    
-   ## Announcement
+
    由于原作者停止维护，国服无法使用出此仓库自用  
    <br>
 
@@ -14,7 +14,7 @@
 
    自己打包注意：选择RoitServer本地X64编译配置编译，release路径下生成文件修改为hid.dll放入Game即可
    gui如遇报错，直接删除对应代码
-
+   ## NOTE
    **此版本暂时未被封过，自行承担风险，如使用本仓库release被ban请及时反馈**
 
 

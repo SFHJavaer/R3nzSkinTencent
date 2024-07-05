@@ -1,7 +1,7 @@
 ﻿<div align="center">
 
 
-   # **R3nzSkin国服14.12**
+   # **R3nzSkin国服**
    
 
    由于原作者停止维护，国服无法使用出此仓库自用  

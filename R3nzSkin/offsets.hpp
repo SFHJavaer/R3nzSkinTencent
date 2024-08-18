@@ -15,7 +15,7 @@ namespace offsets {
 		};
 		enum {
 			Team = 0x3C,
-			Name = 0x60
+			Name = 0x58
 		};
 	};
 

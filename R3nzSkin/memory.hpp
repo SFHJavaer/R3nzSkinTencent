@@ -60,12 +60,12 @@ private:
 	{
 		{
 			{
-				"48 8B 1D ? ? ? ? 48 85 DB 74 15 48"
+				"48 8B 1D ? ? ? ? 48 85 DB 74 15 48 81 C3"
 			}, true, false, true, 0, &offsets::global::Player
 		},
 		{
 			{
-				"48 8B 05 ? ? ? ? 48 8B 58 08 8B 40 10 48 8D 34 C3 48 3B DE 74 49"
+				"48 8B 05 ? ? ? ? 48 8B 58 08 8B 40 10 48 8D 34 C3 48 3B DE"
 			}, true, false, true, 0, &offsets::global::ManagerTemplate_AIHero_
 		},
 		{
@@ -95,7 +95,7 @@ private:
 		},
 		{
 			{
-				"38 9F ? ? 00 00 75 4B 66 C7 87 ? ? ? ? 00 04 0F 31 48 C1 E2 20 48 0B C2 88 87 ? ? 00 00 48 89 44 24 38 0F B6 44 24 39 88 87 1D 13"
+				"88 87 ? ? 00 00 48 89 44 24 38 0F B6 44 24 39 88 87 ?"
 			}, false, true, false, 0, &offsets::AIBaseCommon::SkinId
 		},
 		{
@@ -110,12 +110,12 @@ private:
 		},
 		{
 			{
-				"88 54 24 10 53 55 56 57 41 54 41 55 41 56 41"
+				"88 54 24 10 53 55 56 57 41 54 41 55 41 56"
 			}, true, false, false, 0, &offsets::functions::CharacterDataStack__Update
 		},
 		{
 			{
-				"E8 ? ? ? ? 8B 57 44"
+				"E8 ? ? ? ? 8B 57 34"
 			}, true, false, false, 0, &offsets::functions::Riot__Renderer__MaterialRegistry__GetSingletonPtr
 		},
 		{
@@ -125,7 +125,7 @@ private:
 		},
 		{
 			{
-				"E8 ? ? ? ? 4C 3B F8 0F 94 C0"
+				"E8 ? ? ? ? 4C 3B ? 0F 94 C0"
 			}, true, false, false, 0, &offsets::functions::GetGoldRedirectTarget
 		}
 	};
